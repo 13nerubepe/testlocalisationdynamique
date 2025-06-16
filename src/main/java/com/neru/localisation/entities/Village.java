@@ -3,6 +3,7 @@ package com.neru.localisation.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +27,9 @@ public class Village {
     @NotNull
     @Column(name = "libelleEn", nullable = false, length = 254)
     private String libelleEn;
+
+    @ManyToOne
+    private Commune commune;
 
 
 }

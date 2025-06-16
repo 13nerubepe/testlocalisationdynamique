@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 
 @Entity
 @Setter
@@ -30,4 +32,10 @@ public class Arrondissement {
     @NotNull
     @Column(name = "chefLieu", nullable = false, length = 254)
     private String chefLieu;
+
+    @ManyToOne
+    private Departement departement;
+
+    @OneToMany(mappedBy = "arrondissement")
+    private List<Commune> communeList;
 }

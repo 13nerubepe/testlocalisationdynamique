@@ -34,6 +34,6 @@ public class Region {
     @ManyToOne
     private Pays pays;
 
-//    @OneToMany("region")
-//    private List<Departement> departementList;
+    @OneToMany(mappedBy = "region")
+    private List<Departement> departementList;
 }

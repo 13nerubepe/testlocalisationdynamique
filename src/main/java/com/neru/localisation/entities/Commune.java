@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -25,4 +27,10 @@ public class Commune {
     @NotNull
     @Column(name = "libelleEn", nullable = false, length = 254)
     private String libelleEn;
+
+    @ManyToOne
+    private Arrondissement arrondissement;
+
+    @OneToMany(mappedBy = "commune")
+    private List<Village> villageList;
 }

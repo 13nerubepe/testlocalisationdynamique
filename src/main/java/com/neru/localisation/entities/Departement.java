@@ -33,6 +33,6 @@ public class Departement {
     @ManyToOne
     private Region region;
 
-//    @OneToMany(mappedBy = "departement")
-//    private List<Arrondissement> arrondissementList;
+    @OneToMany(mappedBy = "departement")
+    private List<Arrondissement> arrondissementList;
 }
