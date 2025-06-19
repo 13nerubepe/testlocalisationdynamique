@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Setter
@@ -29,7 +29,7 @@ public class Village {
     private String libelleEn;
 
     @ManyToOne
-    private Commune commune;
+    private Groupement groupement;
 
 
 }

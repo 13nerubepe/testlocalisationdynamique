@@ -1,9 +1,12 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Column;
-import org.jetbrains.annotations.NotNull;
 
-public class ArrondissementDto {
+import lombok.Value;
+
+import java.io.Serializable;
+
+@Value
+public class ArrondissementDto implements Serializable {
     private String arrondissementId;
 
     private String code;

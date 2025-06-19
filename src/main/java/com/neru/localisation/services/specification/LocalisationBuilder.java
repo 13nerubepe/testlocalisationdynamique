@@ -1,10 +1,7 @@
 package com.neru.localisation.services.specification;
 
 import com.neru.localisation.dto.LocalisationFilterDto;
-import com.neru.localisation.entities.Arrondissement;
-import com.neru.localisation.entities.Departement;
-import com.neru.localisation.entities.Pays;
-import com.neru.localisation.entities.Region;
+import com.neru.localisation.entities.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
@@ -61,6 +58,48 @@ public class LocalisationBuilder {
 
         if (StringUtils.hasText(filter.getDepartementId())) {
             spec = spec.and(LocalisationSpecification.byDepartementId(filter.getDepartementId()));
+        }
+
+        if (StringUtils.hasText(filter.getLikeName())) {
+            spec = spec.and(LocalisationSpecification.hasLikeName(filter.getLikeName()));
+        }
+
+        return spec;
+    }
+
+    public static Specification<Commune> buildCommuneSpec(LocalisationFilterDto filter) {
+        Specification<Commune> spec = (root, query, cb) -> cb.conjunction();
+
+        if (StringUtils.hasText(filter.getArrondissementId())) {
+            spec = spec.and(LocalisationSpecification.comByArrondissementId(filter.getArrondissementId()));
+        }
+
+        if (StringUtils.hasText(filter.getLikeName())) {
+            spec = spec.and(LocalisationSpecification.hasLikeName(filter.getLikeName()));
+        }
+
+        return spec;
+    }
+
+    public static Specification<Groupement> buildGroupementSpec(LocalisationFilterDto filter) {
+        Specification<Groupement> spec = (root, query, cb) -> cb.conjunction();
+
+        if (StringUtils.hasText(filter.getArrondissementId())) {
+            spec = spec.and(LocalisationSpecification.grpByArrondissementId(filter.getArrondissementId()));
+        }
+
+        if (StringUtils.hasText(filter.getLikeName())) {
+            spec = spec.and(LocalisationSpecification.hasLikeName(filter.getLikeName()));
+        }
+
+        return spec;
+    }
+
+    public static Specification<Village> buildVillageSpec(LocalisationFilterDto filter) {
+        Specification<Village> spec = (root, query, cb) -> cb.conjunction();
+
+        if (StringUtils.hasText(filter.getGroupementId())) {
+            spec = spec.and(LocalisationSpecification.byGroupementId(filter.getArrondissementId()));
         }
 
         if (StringUtils.hasText(filter.getLikeName())) {

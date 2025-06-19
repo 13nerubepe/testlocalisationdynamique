@@ -3,7 +3,7 @@ package com.neru.localisation.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -38,4 +38,7 @@ public class Arrondissement {
 
     @OneToMany(mappedBy = "arrondissement")
     private List<Commune> communeList;
+
+    @OneToMany(mappedBy = "arrondissement")
+    private List<Groupement> groupementList;
 }

@@ -1,9 +1,12 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Column;
-import org.jetbrains.annotations.NotNull;
 
-public class CommuneDto {
+import lombok.Value;
+
+import java.io.Serializable;
+
+@Value
+public class CommuneDto implements Serializable {
     private String communeId;
     private String code;
 

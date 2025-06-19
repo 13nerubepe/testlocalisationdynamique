@@ -1,9 +1,9 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Column;
-import org.jetbrains.annotations.NotNull;
 
-public class VillageDto {
+import java.io.Serializable;
+
+public class VillageDto implements Serializable {
     private String villageId;
 
     private String code;

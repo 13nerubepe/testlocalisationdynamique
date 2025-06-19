@@ -30,10 +30,15 @@ public class LocalisationSpecification {
     public static Specification<Arrondissement> byDepartementId(String departementId) {
         return (root, query, cb) -> cb.equal(root.get("departement").get("departementId"), departementId);
     }
-    public static Specification<Commune> byArrondissementId(String arrondissementId) {
+    /**  enfant de arrondissement c'est commune et groupement*/
+    public static Specification<Commune> comByArrondissementId(String arrondissementId) {
         return (root, query, cb) -> cb.equal(root.get("arrondissement").get("arrondissementId"), arrondissementId);
     }
-    public static Specification<Village> byCommuneId(String communeId) {
-        return (root, query, cb) -> cb.equal(root.get("commune").get("communeId"), communeId);
+    public static Specification<Groupement> grpByArrondissementId(String arrondissementId) {
+        return (root, query, cb) -> cb.equal(root.get("arrondissement").get("arrondissementId"), arrondissementId);
     }
+    public static Specification<Village> byGroupementId(String groupementId) {
+        return (root, query, cb) -> cb.equal(root.get("groupement").get("groupementId"), groupementId);
+    }
+
 }

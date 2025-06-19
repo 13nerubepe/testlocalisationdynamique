@@ -3,6 +3,9 @@ package com.neru.localisation.controlleur;
 import com.neru.localisation.dto.ContinentDto;
 import com.neru.localisation.services.LocalisationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,4 +36,22 @@ public class LocalisationControlleur {
 
         return null;
     }
+
+//    @GetMapping("pays/{paysId}")
+//    public ResponseEntity<BasePaysDto> getPaysById(@PathVariable("paysId") String paysId){
+//        BasePaysDto paysD = baseLocalisationService.findPaysById(paysId);
+//        return ResponseEntity.ok(paysD);
+//    }
+//
+//    @GetMapping("listpays")
+//    public ResponseEntity<List<BasePaysDto>> getListPays(){
+//        List<BasePaysDto> pays = baseLocalisationService.findAllPays();
+//        return ResponseEntity.ok(pays);
+//    }
+
+//    @GetMapping("/pays")
+//    public  ResponseEntity<Page<BasePaysDto>> getPagePays(@ParameterObject @ModelAttribute BaseLocalisationFilterDto filter, @ParameterObject Pageable pageable) {
+//        Page<BasePaysDto> pageResult = baseLocalisationService.searchPaginatedPays(filter, pageable);
+//        return ResponseEntity.ok(pageResult);
+//    }
 }

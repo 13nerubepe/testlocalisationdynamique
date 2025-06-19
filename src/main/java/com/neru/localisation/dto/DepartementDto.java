@@ -1,9 +1,12 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Column;
-import org.jetbrains.annotations.NotNull;
 
-public class DepartementDto {
+import lombok.Value;
+
+import java.io.Serializable;
+
+@Value
+public class DepartementDto implements Serializable {
     private String departementId;
 
     private String code;

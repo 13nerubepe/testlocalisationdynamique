@@ -9,6 +9,9 @@ import com.neru.localisation.repository.PaysRepository;
 import com.neru.localisation.repository.RegionRepository;
 import com.neru.localisation.services.LocalisationService;
 import com.neru.localisation.services.specification.LocalisationBuilder;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -38,12 +41,12 @@ public class LocalisationServiceImpl implements LocalisationService {
 
     @Override
     public List<PaysDto> searchPaysByContinentId(LocalisationFilterDto filter) {
-//        Specification<Pays> spPays = LocalisationBuilder.buildPaysSpec(filter);
-//        return paysRepository.findAll(spPays)
-//                .stream()
-//                .map(LocalisationMapper::toDto)
-//                .collect(Collectors.toList());
-        return null;
+        Specification<Pays> spPays = LocalisationBuilder.buildPaysSpec(filter);
+        return paysRepository.findAll(spPays)
+                .stream()
+                .map(pays -> localisationMapper.toDto(pays))
+                .collect(Collectors.toList());
+
     }
 
     @Override
@@ -132,6 +135,16 @@ public class LocalisationServiceImpl implements LocalisationService {
     }
 
     @Override
+    public GroupementDto findGroupementById(String groupementId) {
+        return null;
+    }
+
+    @Override
+    public List<GroupementDto> findAllGroupement() {
+        return null;
+    }
+
+    @Override
     public VillageDto findVillageById(String villageId) {
         return null;
     }
@@ -140,4 +153,34 @@ public class LocalisationServiceImpl implements LocalisationService {
     public List<VillageDto> findAllVillage() {
         return null;
     }
+
+    /**
+     * dans le projet de Probmis-Base
+     * Gestion de pays
+     */
+
+//    @Override
+//    public BasePaysDto findPaysById(String paysId) {
+//        return localisationMapper.toDto(basePaysRepository.findById(paysId).orElseThrow(
+//                () -> new EntityNotFoundException("continent non trouvé: " + paysId)
+//        ));
+//    }
+//
+//
+//    @Override
+//    public List<BasePaysDto> findAllPays() {
+//        return basePaysRepository.findAll().stream().map(localisationMapper::toDto).collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public Page<BasePaysDto> searchPaginatedPays(BaseLocalisationFilterDto filter, Pageable pageable){
+//        Specification<BasePays> spec = BaseLocalisationBuilder.buildPaysSpec(filter);
+//        return basePaysRepository.findAll(spec, pageable).map(localisationMapper ::toDto);
+//    }
+
+//    @Override
+//    public Page<BaseVillageDto> searchPaginatedVillage(BaseLocalisationFilterDto filter, Pageable pageable){
+//        Specification<BaseVillage> spec = BaseLocalisationBuilder.buildVillageSpec(filter);
+//        return baseVillageRepository.findAll(spec, pageable).map(localisationMapper ::toDto);
+//    }
 }

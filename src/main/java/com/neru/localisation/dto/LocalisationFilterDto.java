@@ -1,6 +1,5 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +12,7 @@ public class LocalisationFilterDto {
     private String departementId;
     private String arrondissementId;
     private String communeId;
+    private String groupementId;
     private String villageId;
 
 

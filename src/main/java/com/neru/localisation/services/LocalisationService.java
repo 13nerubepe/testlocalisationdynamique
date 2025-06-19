@@ -49,7 +49,7 @@ public interface LocalisationService {
 
     /**
      * dans le projet de Probmis-Base
-     * Gestion de pays
+     * Gestion de arrondissement
      */
 
     PaysDto findArrondissementById(String arrondissement);
@@ -57,11 +57,23 @@ public interface LocalisationService {
 
     /**
      * dans le projet de Probmis-Base
-     * Gestion de Region
+     * Gestion de commune
      */
 
-    CommuneDto findCommuneById(String CommuneId);
+    CommuneDto findCommuneById(String communeId);
     List<CommuneDto> findAllCommune();
+
+
+
+    /**
+     * dans le projet de Probmis-Base
+     * Gestion de groupement
+     */
+
+    GroupementDto findGroupementById(String groupementId);
+    List<GroupementDto> findAllGroupement();
+
+
 
     /**
      * dans le projet de Probmis-Base

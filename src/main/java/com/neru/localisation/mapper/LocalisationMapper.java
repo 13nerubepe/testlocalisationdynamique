@@ -62,6 +62,16 @@ public interface LocalisationMapper {
     Commune partialUpdate(CommuneDto communeDto, @MappingTarget Commune commune);
 
 
+    /**   Groupement*/
+
+    Groupement toEntity(GroupementDto groupementDto);
+
+    GroupementDto toDto(Groupement groupement);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Groupement partialUpdate(GroupementDto groupementDto, @MappingTarget Groupement groupement);
+
+
     /**   village*/
 
     Village toEntity(VillageDto villageDto);

@@ -1,9 +1,12 @@
 package com.neru.localisation.dto;
 
-import jakarta.persistence.Column;
-import org.jetbrains.annotations.NotNull;
 
-public class ContinentDto {
+import lombok.Value;
+
+import java.io.Serializable;
+
+@Value
+public class ContinentDto implements Serializable {
     private String continentId;
     private String code;
     private String libelleFr;
