@@ -3,9 +3,7 @@ package com.neru.localisation.controlleur;
 import com.neru.localisation.dto.ContinentDto;
 import com.neru.localisation.services.LocalisationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springdoc.core.annotations.ParameterObject;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,17 +1,11 @@
 package com.neru.localisation.services.impls;
 
 import com.neru.localisation.dto.*;
-import com.neru.localisation.entities.Pays;
+import com.neru.localisation.entities.*;
 import com.neru.localisation.mapper.LocalisationMapper;
-import com.neru.localisation.repository.ContinentRepository;
-import com.neru.localisation.repository.DepartementRepository;
-import com.neru.localisation.repository.PaysRepository;
-import com.neru.localisation.repository.RegionRepository;
+import com.neru.localisation.repository.*;
 import com.neru.localisation.services.LocalisationService;
 import com.neru.localisation.services.specification.LocalisationBuilder;
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +20,21 @@ public class LocalisationServiceImpl implements LocalisationService {
     private final PaysRepository paysRepository;
     private final RegionRepository regionRepository;
     private final DepartementRepository departementRepository;
+    private final ArrondissementRepository arrondissementRepository;
+    private final CommuneRepository communeRepository;
+    private final GroupementRepository groupementRepository;
+    private final VillageRepository villageRepository;
     private final LocalisationMapper localisationMapper;
 
-    public LocalisationServiceImpl(ContinentRepository continentRepository, PaysRepository paysRepository, RegionRepository regionRepository, DepartementRepository departementRepository, LocalisationMapper localisationMapper) {
+    public LocalisationServiceImpl(ContinentRepository continentRepository, PaysRepository paysRepository, RegionRepository regionRepository, DepartementRepository departementRepository, ArrondissementRepository arrondissementRepository, CommuneRepository communeRepository, GroupementRepository groupementRepository, VillageRepository villageRepository, LocalisationMapper localisationMapper) {
         this.continentRepository = continentRepository;
         this.paysRepository = paysRepository;
         this.regionRepository = regionRepository;
         this.departementRepository = departementRepository;
+        this.arrondissementRepository = arrondissementRepository;
+        this.communeRepository = communeRepository;
+        this.groupementRepository = groupementRepository;
+        this.villageRepository = villageRepository;
         this.localisationMapper = localisationMapper;
     }
 
@@ -44,34 +46,54 @@ public class LocalisationServiceImpl implements LocalisationService {
         Specification<Pays> spPays = LocalisationBuilder.buildPaysSpec(filter);
         return paysRepository.findAll(spPays)
                 .stream()
-                .map(pays -> localisationMapper.toDto(pays))
+                .map(localisationMapper::toDto)
                 .collect(Collectors.toList());
 
     }
 
     @Override
     public List<RegionDto> searchRegionByPaysId(LocalisationFilterDto filter) {
-        return null;
+        Specification<Region> spregion = LocalisationBuilder.buildRegionSpec(filter);
+        return regionRepository.findAll(spregion)
+                .stream()
+                .map(localisationMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<DepartementDto> searchDepartementsByRegionId(LocalisationFilterDto filter) {
-        return null;
+        Specification<Departement> spdepartement = LocalisationBuilder.buildDepartementSpec(filter);
+        return departementRepository.findAll(spdepartement)
+                .stream()
+                .map(departement -> localisationMapper.toDto(departement))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ArrondissementDto> searchRegionByDepartementId(LocalisationFilterDto filter) {
-        return null;
+        Specification<Arrondissement> sparrondissement = LocalisationBuilder.buildArrondissementSpec(filter);
+        return arrondissementRepository.findAll(sparrondissement)
+                .stream()
+                .map(arrondissement -> localisationMapper.toDto(arrondissement))
+                .toList();
     }
 
     @Override
     public List<CommuneDto> searchCommunesByArrondissementId(LocalisationFilterDto filter) {
-        return null;
+        Specification<Commune> spcommune = LocalisationBuilder.buildCommuneSpec(filter);
+        return communeRepository.findAll(spcommune)
+                .stream()
+                .map(commune -> localisationMapper.toDto(commune))
+                .toList();
     }
 
     @Override
     public List<VillageDto> searchVillageByCommuneId(LocalisationFilterDto filter) {
-        return null;
+        Specification<Village> spvillage = LocalisationBuilder.buildVillageSpec(filter);
+        return villageRepository.findAll(spvillage)
+                .stream()
+                .map(departement -> localisationMapper.toDto(departement))
+                .collect(Collectors.toList());
     }
 
     @Override
