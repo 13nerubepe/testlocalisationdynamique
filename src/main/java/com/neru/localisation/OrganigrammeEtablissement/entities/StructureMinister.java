@@ -1,9 +1,9 @@
-package com.neru.localisation.OrganigrammeCollege.entities;
+package com.neru.localisation.OrganigrammeEtablissement.entities;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
-public class Poste {
+public class StructureMinister {
     @Id
     private String posteId;
     private String poste;
@@ -12,5 +12,5 @@ public class Poste {
     private Integer niveau;
 
     @ManyToOne
-    private Departement departement;
+    private Service departement;
 }

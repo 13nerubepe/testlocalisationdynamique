@@ -1,11 +1,8 @@
-package com.neru.localisation.OrganigrammeCollege.entities;
+package com.neru.localisation.OrganigrammeEtablissement.entities;
 
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
-import java.util.List;
-
-public class Departement {
+public class Service {
     @Id
     private String departementId;
     private String nom;

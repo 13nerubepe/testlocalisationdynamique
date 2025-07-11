@@ -2,7 +2,6 @@ package com.neru.localisation.Localisation.services.specification;
 
 import com.neru.localisation.Localisation.entities.*;
 import com.neru.localisation.Localisation.dto.LocalisationFilterDto;
-import com.neru.localisation.entities.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 

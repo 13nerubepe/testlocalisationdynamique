@@ -2,8 +2,6 @@ package com.neru.localisation.Localisation.mapper;
 
 import com.neru.localisation.Localisation.dto.*;
 import com.neru.localisation.Localisation.entities.*;
-import com.neru.localisation.dto.*;
-import com.neru.localisation.entities.*;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

@@ -36,4 +36,7 @@ public class Region {
 
     @OneToMany(mappedBy = "region")
     private List<Departement> departementList;
+
+
+//
 }

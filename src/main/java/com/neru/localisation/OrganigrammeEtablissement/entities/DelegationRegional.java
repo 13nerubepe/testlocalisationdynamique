@@ -1,13 +1,13 @@
-package com.neru.localisation.OrganigrammeCollege.entities;
+package com.neru.localisation.OrganigrammeEtablissement.entities;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 import java.time.Instant;
 
-public class Acteur {
+public class DelegationRegional {
     @Id
-    private String acteurId;
+    private String personnelId;
     private String nom;
     private String prenom;
     private String sexe;
@@ -15,9 +15,11 @@ public class Acteur {
     private String number;
     private Boolean actif = true;
     private Instant dateEmbauche;
+    private String Fonction;
+    private String etablissementId;
 
     @ManyToOne
-    private Poste poste;
+    private StructureMinister poste;
 
     @ManyToOne
     private TypePersonnel typePersonnel;
